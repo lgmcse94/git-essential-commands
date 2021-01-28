@@ -1,0 +1,168 @@
+Git training
+
+which git
+git --version
+git config --global user.name “Linga”
+git config --global user.email “Lingamaiah.Manga@cbre.com”
+git config --list
+
+git config user.name
+git config user.email
+cd ~
+ls -la
+cat .gitconfig
+git config --global core.editor “atom —wait”
+git config --global color.ui true
+ls -la
+https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+Save it…
+mv git-completion.bash .git-completion.bash
+ls -la
+nano .bash_profile
+
+if [ -f ~/.git-completion.bash ]; then
+        source ~/.git-completion.bash
+fi
+
+cat .bash_profile 
+
+New window…
+git h then tab
+git c then tab
+git help
+git help log
+..space…q
+man ls
+man git-log
+
+Create folder first git project …
+cd /Users/lmanga/Documents/first\ git\ project 
+git init
+ls -la
+ls -la .git/
+
+git add .
+git commit -m “initial commit”
+git log 
+git help log
+git log -n 5
+git log —since=2020-01-01
+git log —until=2020-01-01
+git log —author=“Lin”
+git log —grep=“initial*”
+git log —grep=“BugFixes*”
+
+cat .git/HEAD
+cat .git/refs/heads/master
+git log
+git diff
+git diff —staged
+git diff —cached
+git add .
+git commit -m “msge”
+git status
+git rm firstfile.txt
+git status
+git commit -m “deleted first file.txt”
+
+Rename the file….it. will recognise as deleted one file and added another file..
+git status
+git add firstfile.txt
+git rm firstfile2.txt
+git  status 
+Then It recognise in staging as renamed the file
+git mv secondfile.txt secondary_file.txt
+git mv firstfile.txt first/f_file.txt
+git  status 
+git commit -m “moving or renaming”
+git diff
+git diff —color-words
+
+Directly commit instead of staging…(git add .)
+git commit -am “adding all modified files, it will not include untracked files”
+git status
+
+To see the changes with hash id….
+
+git show hash_id
+git show hash_id —color-words
+
+
+Compare different commits…
+
+git show hash_id1…hash_id2 —color-words
+
+Multiple commit msges…
+Instead of (git commit -am “some msge”)
+git commit -a
+..then it will wait for commit msge in text pad…then write msge with multiple lines…and close it.
+
+git log
+
+git log —oneline
+git diff filename.txt
+
+To discard the changes in current directory….(undo working directory changes…)
+
+git checkout — filename.txt
+git checkout — .
+
+Onstage files…
+git reset HEAD filename.txt
+
+
+Amend commits…(take the last commit to staging and push the whatever there in staging)
+
+git commit -amend -m “take whatever is there in old commit, bring it back down the staging, add whatever staging has into it and then let’s re-commit.generating the new SHA in the process”
+
+Retrieve old versions….
+git checkout hash_id — filename.txt
+git diff —staged
+Modify file..
+git add filename.txt
+git status
+git diff —staged
+…….
+git reset HEAD filename.txt
+git checkout — filename.txt
+git status
+…..
+Revert a commit…
+git revert hash_id
+git show hash_id
+……
+Remove untracked files….
+git clean -n
+..it will says,( would remove msge.)
+
+git clean -f
+..it removes the files.
+
+……..
+Un stage the file..
+
+git reset HEAD filename.txt
+git clean -n
+git clean -f
+——
+Use .gitignore files
+*.log
+!abc.log
+——
+git config —global core.excludesfile ~/.gitignore_global
+—-
+Ignore tracked files…
+git add db.txt
+git commit -m “adding db file”
+
+Add db.txt in  .gitignore file
+git rm —cached db.txt
+git status
+git diff —staged
+git add .gitignore
+git commit -m “stop tracking changes to db.txt”
+
+
+Track empty directories…
+Create empty folder and inside that create .gitkeep(any file then git recognise as not empty dir)
+
